@@ -1,0 +1,16 @@
+# Java / Maven
+backend/target/
+backend/.classpath
+backend/.project
+backend/.settings/
+# Angular / Node
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+# IDE and local environment
+.vscode/
+.idea/
+.env
+.env.*
+!.env.example
+*.log

@@ -1,0 +1,38 @@
+server:
+  port: ${SERVER_PORT:8080}
+spring:
+  profiles:
+    default: dev
+  application:
+    name: clinica-odontologica-api
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/clinica_odontologica?createDatabaseIfNotExist=true&serverTimezone=America/Sao_Paulo}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:1234}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+app:
+  jwt:
+    secret: ${JWT_SECRET:dev-only-change-this-secret-key-before-production-2026}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  cors:
+    allowed-origin: ${FRONTEND_ORIGIN:http://localhost:4200}
+  seed:
+    enabled: ${SEED_ENABLED:true}
+    admin-email: ${ADMIN_EMAIL:admin@clinica.local}
+    admin-password: ${ADMIN_PASSWORD:1234}
+    dentist-email: ${DENTIST_EMAIL:marina@clinica.local}
+    dentist-password: ${DENTIST_PASSWORD:1234}
